@@ -10,6 +10,11 @@
 		<p>{{greeting.text}}, World</p>
 	</div>
 	<script src="js/angular.min.js"></script>
-	<script src="js/hello/controllers.js"></script>	
+
+	<script>
+	function HelloController($scope) {
+		$scope.greeting = { text: 'Hello' };
+	}	
+	</script>
 </body>
 </html>

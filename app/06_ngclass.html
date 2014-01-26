@@ -1,0 +1,63 @@
+<!doctype html>
+<html data-ng-app>
+<head>
+	<meta charset="utf-8">
+	<title>Alerts using classes</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<style>
+.error {
+	background-color: red;
+}
+.warning {
+	background-color: yellow;
+}
+.ok {
+	background-color: green;
+}
+</style>
+</head>
+
+<body>
+<div class="container" ng-controller='HeaderController'>
+			<div>WARNING STATUS: </div>
+			<div ng-class='{error: isError, warning: isWarning, ok: isOK}'>{{messageText}}</div>
+	<div class="row">
+		<div class="span12">
+			<button class="btn btn-primary" ng-click='showError()'>Simulate Error</button>
+			<button class="btn btn-primary" ng-click='showWarning()'>Simulate Warning</button>
+			<button class="btn btn-primary" ng-click='showOK()'>Reset to OK</button>
+		</div>
+	</div>
+</div>
+	<script src="js/angular.min.js"></script>
+<script>
+function HeaderController($scope) {
+	$scope.messageText = 'Everything is OK';
+
+	$scope.isError = false;
+	$scope.isWarning = false;
+	$scope.isOK = true;
+	
+	$scope.showError = function() {
+		$scope.messageText = 'This is an error!';
+		$scope.isError = true;
+		$scope.isWarning = false;
+		$scope.isOK = false;
+	};
+	
+	$scope.showWarning = function() {
+		$scope.messageText = 'Just a warning. Please carry on.';
+		$scope.isWarning = true;
+		$scope.isError = false;
+		$scope.isOK = false;
+	};
+	$scope.showOK = function() {
+		$scope.messageText = 'Everything is OK';
+		$scope.isWarning = false;
+		$scope.isError = false;
+		$scope.isOK = true;
+	};	
+}
+</script>
+</body>
+</html>

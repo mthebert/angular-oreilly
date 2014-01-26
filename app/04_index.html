@@ -1,0 +1,30 @@
+<!doctype html>
+<html data-ng-app>
+<head>
+	<meta charset="utf-8">
+	<title>Using Indexes</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+	<table ng-controller='AlbumController'>
+		<tr ng-repeat='track in album'>
+			<td>{{$index + 1}}</td>
+			<td>{{track.name}}</td>
+			<td>{{track.duration}}</td>
+		</tr>
+	</table>
+</div>
+	<script src="js/angular.min.js"></script>
+<script>
+var album = [{name:'Southwest Serenade', duration: '2:34'},
+	{name:'Northern Light Waltz', duration: '3:21'},
+	{name:'Eastern Tango', duration: '17:45'}];
+
+function AlbumController($scope) {
+	$scope.album = album;
+}
+</script>
+</body>
+</html>

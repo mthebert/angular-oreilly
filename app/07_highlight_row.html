@@ -1,0 +1,34 @@
+<!doctype html>
+<html data-ng-app>
+<head>
+	<meta charset="utf-8">
+	<title>Highlighting a row</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<style>
+.selected {
+	background-color: lightgreen;
+}
+</style>
+</head>
+
+<body>
+	<table ng-controller='RestaurantTableController'>
+		<tr ng-repeat='restaurant in directory' ng-click='selectRestaurant($index)' ng-class='{selected: $index==selectedRow}'>
+			<td>{{restaurant.name}}</td>
+			<td>{{restaurant.cuisine}}</td>
+		</tr>
+	</table>
+	<script src="js/angular.min.js"></script>
+<script>
+function RestaurantTableController($scope) {
+	$scope.directory = [{name:'The Handsome Heifer', cuisine:'BBQ'},
+		{name:'Greens Green Greens', cuisine:'Salads'},
+		{name:'House of Fine Fish', cuisine:'Seafood'}
+	];
+	$scope.selectRestaurant = function(row) {
+		$scope.selectedRow = row;
+	};
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html data-ng-app>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+	<div ng-controller='DeathrayMenuController'>
+		<button ng-click='toggleMenu()' class="btn btn-primary">Toggle Menu</button>
+		<ul ng-show='menuState.show'>
+			<li ng-click='stun()'>Stun</li>
+			<li ng-click='disintegrate()'>Disintegrate</li>
+			<li ng-click='erase()'>Erase from history</li>
+		</ul>
+	<div/>
+</div>
+	<script src="js/angular.min.js"></script>
+<script>
+function DeathrayMenuController($scope) {
+	
+	$scope.menuState = {};
+	$scope.menuState.show = false;
+	
+	$scope.toggleMenu = function() {
+		$scope.menuState.show = !$scope.menuState.show;
+	};
+	$scope.stun = function(){
+		window.alert("You are stunned!");
+	}
+	$scope.disintegrate = function(){
+		window.alert("Disintegrated!  You are no more...");
+	}	
+	$scope.erase = function(){
+		window.alert("Erased!  You have never existed...");
+	}	
+}
+</script>
+</body>
+</html>
